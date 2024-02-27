@@ -3,12 +3,12 @@ const router = express.Router();
 const Encrypted = require("../models/dbEncrypted");
 
 router.post("/kirimEncrypted", async (req, res) => {
-  const { encryptedText } = req.body;
+  const { encrypted } = req.body;
 
   const timestamp = new Date();
 
   const newEncrtypted = new Encrypted({
-    encryptedText: encryptedText,
+    encryptedText: encrypted,
   });
 
   try {
