@@ -11,9 +11,9 @@ router.post("/kirimData", async (req, res) => {
   const newData = new Data({
     status_pintu: status_pintu,
     teks_asli: teks_asli,
+    encryptedText: encrypted,
     teks_dekripsi: teks_dekripsi,
     riwayat_pin: riwayat_pin,
-    encryptedText: encrypted,
   });
 
   try {
@@ -36,6 +36,5 @@ router.get("/getDataAll", async (req, res) => {
     res.status(500).json({ message: "Gagal mengambil data all" });
   }
 });
-
 
 module.exports = router;

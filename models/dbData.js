@@ -4,9 +4,9 @@ const dataSchema = new mongoose.Schema(
   {
     status_pintu: String,
     teks_asli: String,
+    encryptedText: String,
     teks_dekripsi: String,
     riwayat_pin: String,
-    encryptedText: String,
   },
   {
     timestamps: true,
