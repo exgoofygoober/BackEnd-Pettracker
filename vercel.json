@@ -8,6 +8,7 @@
   ],
   "routes": [
     { "src": "/api/encrypted/(.*)", "dest": "storage.js" },
+    { "src": "/api/data/(.*)", "dest": "storage.js" },
     { "src": "/(.*)", "dest": "storage.js" }
   ]
 }
