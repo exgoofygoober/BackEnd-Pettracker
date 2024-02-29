@@ -7,6 +7,8 @@ const dataSchema = new mongoose.Schema(
     encryptedText: String,
     teks_dekripsi: String,
     riwayat_pin: String,
+    pin_lama: String,
+    pin_baru: String,
   },
   {
     timestamps: true,
