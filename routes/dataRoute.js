@@ -7,11 +7,11 @@ router.post("/kirimData", async (req, res) => {
     status_pintu,
     teks_asli,
     teks_dekripsi,
-    encrypted,
+    teks_enkripsi,
     pinLama,
-    encrypted2,
+    teks_enkripsi_sebelum,
     pinBaru,
-    encrypted3,
+    teks_enkripsi_sesudah,
  } = req.body;
 
   const timestamp = new Date();
@@ -19,12 +19,12 @@ router.post("/kirimData", async (req, res) => {
   const newData = new Data({
     status_pintu: status_pintu,
     teks_asli: teks_asli,
-    encryptedText: encrypted,
+    teks_enkripsi: teks_enkripsi,
     teks_dekripsi: teks_dekripsi,
     pin_lama: pinLama,
-    encryptedText: encrypted2,
+    teks_enkripsi_sebelum: teks_enkripsi_sebelum,
     pin_baru: pinBaru,
-    encryptedText: encrypted3,
+    teks_enkripsi_sesudah: teks_enkripsi_sesudah,
   });
 
   try {
