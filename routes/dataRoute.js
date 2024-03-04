@@ -3,8 +3,16 @@ const router = express.Router();
 const Data = require("../models/dbData");
 
 router.post("/kirimData", async (req, res) => {
-  const { status_pintu, teks_asli, teks_dekripsi, riwayat_pin, encrypted, pinLama, pinBaru } =
-    req.body;
+  const {
+    status_pintu,
+    teks_asli,
+    teks_dekripsi,
+    encrypted,
+    pinLama,
+    encrypted2,
+    pinBaru,
+    encrypted3,
+ } = req.body;
 
   const timestamp = new Date();
 
@@ -13,9 +21,10 @@ router.post("/kirimData", async (req, res) => {
     teks_asli: teks_asli,
     encryptedText: encrypted,
     teks_dekripsi: teks_dekripsi,
-    riwayat_pin: riwayat_pin,
     pin_lama: pinLama,
+    encryptedText: encrypted2,
     pin_baru: pinBaru,
+    encryptedText: encrypted3,
   });
 
   try {
