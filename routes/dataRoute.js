@@ -6,8 +6,8 @@ router.post("/kirimData", async (req, res) => {
   const {
     status_pintu,
     teks_asli,
-    teks_dekripsi,
     teks_enkripsi,
+    teks_dekripsi,
     pinLama,
     teks_enkripsi_sebelum,
     pinBaru,
@@ -39,7 +39,7 @@ router.post("/kirimData", async (req, res) => {
 
 router.get("/getDataAll", async (req, res) => {
   try {
-    const data = await Data.find({});
+    const data = await Data.find({}).sort({ createdAt: -1 });
     console.log("Berhasil mengambil data all");
     res.status(200).json(data);
   } catch (err) {
@@ -47,5 +47,6 @@ router.get("/getDataAll", async (req, res) => {
     res.status(500).json({ message: "Gagal mengambil data all" });
   }
 });
+
 
 module.exports = router;
