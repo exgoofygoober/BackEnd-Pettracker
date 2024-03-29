@@ -25,4 +25,16 @@ router.post("/kirimLora", async (req, res) => {
   }
 });
 
+router.get("/dataLora", async (req, res) => {
+  try {
+    const data = await Lora.find(); 
+    res.status(200).json(data);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ message: "Terjadi kesalahan saat mengambil data LoRa" });
+  }
+});
+
 module.exports = router;
