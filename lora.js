@@ -3,8 +3,7 @@ const cors = require("cors");
 
 const dbConfig = require("./mongoDB");
 
-const encryptedRoute = require("./routes/encryptedRoute");
-const dataRoute = require("./routes/dataRoute");
+const loraRoute = require("./routes/loraRoute");
 
 const app = express();
 
@@ -19,8 +18,7 @@ app.get("/", async (req, res, next) => {
   });
 });
 
-app.use("/api/encrypted", encryptedRoute);
-app.use("/api/data", dataRoute);
+app.use("/lora", loraRoute);
 
 const port = process.env.PORT || 3000;
 
