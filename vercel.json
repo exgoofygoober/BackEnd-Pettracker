@@ -2,13 +2,12 @@
   "version": 2,
   "builds": [
     {
-      "src": "storage.js",
+      "src": "lora.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
-    { "src": "/api/encrypted/(.*)", "dest": "storage.js" },
-    { "src": "/api/data/(.*)", "dest": "storage.js" },
-    { "src": "/(.*)", "dest": "storage.js" }
+    { "src": "/lora/(.*)", "dest": "lora.js" },
+    { "src": "/(.*)", "dest": "lora.js" }
   ]
 }
