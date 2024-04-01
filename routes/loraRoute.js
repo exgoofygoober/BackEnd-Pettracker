@@ -16,7 +16,7 @@ router.post("/kirimLora", async (req, res) => {
 
     await newData.save();
 
-    res.status(201).json({ message: "Data LoRa berhasil disimpan" });
+    res.status(200).json({ message: "Data LoRa berhasil disimpan" });
   } catch (error) {
     console.error(error);
     res
@@ -25,7 +25,7 @@ router.post("/kirimLora", async (req, res) => {
   }
 });
 
-router.get("/dataLora", async (req, res) => {
+router.get("/dataLora", async (req, res) => { 
   try {
     const data = await Lora.find(); 
     res.status(200).json(data);
