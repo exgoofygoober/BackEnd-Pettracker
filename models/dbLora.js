@@ -6,11 +6,9 @@ const loraSchema = new mongoose.Schema(
   {
     status: {
       type: String,
-      required: true,
     },
     LoRaData: {
       type: String,
-      required: true,
     },
     rssiString: {
       type: String,
