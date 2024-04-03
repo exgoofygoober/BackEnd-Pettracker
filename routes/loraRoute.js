@@ -6,11 +6,11 @@ const Lora = require("../models/dbLora");
 
 router.post("/kirimLora", async (req, res) => {
   try {
-    const { status, LoRaData, rssiString } = req.body;
+    const { loraData, gps, rssiString } = req.body;
 
     const newData = new Lora({
-      status,
-      LoRaData,
+      loraData,
+      gps,
       rssiString,
     });
 

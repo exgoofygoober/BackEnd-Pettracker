@@ -4,15 +4,14 @@ const mongoose = require("mongoose");
 
 const loraSchema = new mongoose.Schema(
   {
-    status: {
+    loraData: {
       type: String,
     },
-    LoRaData: {
+    gps: {
       type: String,
     },
     rssiString: {
       type: String,
-      required: true,
     },
   },
   {
