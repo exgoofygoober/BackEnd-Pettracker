@@ -20,6 +20,6 @@ app.get("/", async (req, res, next) => {
 
 app.use("/lora", loraRoute);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log("Server Sensor is running on port", port));
