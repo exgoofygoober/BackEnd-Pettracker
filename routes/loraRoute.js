@@ -27,7 +27,7 @@ router.post("/kirimLora", async (req, res) => {
 
 router.get("/dataLora", async (req, res) => { 
   try {
-    const data = await Lora.find(); 
+    const data = await Lora.find({}).sort({ createdAt: -1 });
     res.status(200).json(data);
   } catch (error) {
     console.error(error);
