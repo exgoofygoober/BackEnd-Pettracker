@@ -36,5 +36,24 @@ router.get("/dataLora", async (req, res) => {
       .json({ message: "Terjadi kesalahan saat mengambil data LoRa" });
   }
 });
+router.get("/limitLora", async (req, res) => {
+  try {
+    let limit = req.query.limit ? parseInt(req.query.limit) : null; 
+    let query = {};
 
+    if (limit !== null) {
+      query = Lora.find({}).sort({ createdAt: -1 }).limit(limit);
+    } else {
+      query = Lora.find({}).sort({ createdAt: -1 });
+    }
+
+    const data = await query;
+    res.status(200).json(data);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ message: "Terjadi kesalahan saat mengambil data LoRa" });
+  }
+});
 module.exports = router;
