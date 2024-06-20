@@ -2,7 +2,7 @@
 
 const express = require("express");
 const router = express.Router();
-const Lora = require("../models/dbLora"); 
+const Lora = require("../models/dbLora");
 
 router.post("/kirimLora", async (req, res) => {
   try {
@@ -25,7 +25,7 @@ router.post("/kirimLora", async (req, res) => {
   }
 });
 
-router.get("/dataLora", async (req, res) => { 
+router.get("/dataLora", async (req, res) => {
   try {
     const data = await Lora.find({}).sort({ createdAt: -1 });
     res.status(200).json(data);
@@ -38,7 +38,7 @@ router.get("/dataLora", async (req, res) => {
 });
 router.get("/limitLora", async (req, res) => {
   try {
-    let limit = req.query.limit ? parseInt(req.query.limit) : null; 
+    let limit = req.query.limit ? parseInt(req.query.limit) : null;
     let query = {};
 
     if (limit !== null) {
@@ -56,23 +56,33 @@ router.get("/limitLora", async (req, res) => {
       .json({ message: "Terjadi kesalahan saat mengambil data LoRa" });
   }
 });
+
 router.get("/pageLora", async (req, res) => {
   try {
     let limit = req.query.limit ? parseInt(req.query.limit) : 1;
     let page = req.query.page ? parseInt(req.query.page) : 0;
 
-    const offset = page * limit;
+    totalData = await Lora.countDocuments({});
+    const totalHal = Math.ceil(totalData / limit);
+
+    let offset = page * limit;
+
+    if (offset >= totalData) {
+      offset = (totalHal - 1) * limit;
+    }
 
     const data = await Lora.find({})
       .sort({ createdAt: -1 })
       .skip(offset)
       .limit(limit);
     res.status(200).json(data);
+    console.log(data);
   } catch (error) {
     console.error(error);
     res
       .status(500)
-      .json({ message: "Terjadi kesalahan saat mengambil data LoRa" })
-  }});
-      module.exports = router;
-  
+      .json({ message: "Terjadi kesalahan saat mengambil data LoRa" });
+  }
+});
+
+module.exports = router;
